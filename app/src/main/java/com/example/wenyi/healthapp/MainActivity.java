@@ -1,6 +1,7 @@
 package com.example.wenyi.healthapp;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -42,9 +43,21 @@ public class MainActivity extends AppCompatActivity {
 
         float bmi = weight/(height*height);
        // Log.d("BMI" ,String.valueOf(bmi));
+        // Toast.makeText(this,String.valueOf(bmi),Toast.LENGTH_LONG).show();
 
 
+        /*AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("您的BMI值為"+bmi);
+        builder.show();
+                */
 
+
+        new AlertDialog.Builder(this)
+                .setMessage(bmi+"")
+                .setTitle("bmi 運算")
+                .setPositiveButton("OK",null)
+                .setNeutralButton("Cancel",null)
+                .show();
 
 
 
