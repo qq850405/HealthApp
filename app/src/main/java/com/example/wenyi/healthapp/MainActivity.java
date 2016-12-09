@@ -50,12 +50,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void bmi(View v){
-        String w = edWeight.getText().toString();
-        String h = edHeight.getText().toString();
-        float weight = Float.parseFloat(w);
-        float height = Float.parseFloat(h);
 
-        float bmi = weight/(height*height);
+
+
        // Log.d("BMI" ,String.valueOf(bmi));
         // Toast.makeText(this,String.valueOf(bmi),Toast.LENGTH_LONG).show();
 
@@ -64,15 +61,33 @@ public class MainActivity extends AppCompatActivity {
         builder.setMessage("您的BMI值為"+bmi);
         builder.show();
                 */
+        String w = edWeight.getText().toString();
+        String h = edHeight.getText().toString();
 
 
-        new AlertDialog.Builder(this)
-                .setMessage(bmi+"")
-                .setTitle("bmi 運算")
-                .setPositiveButton("OK",null)
-                .setNeutralButton("Cancel",null)
-                .show();
 
+        if(w.equals("") || h.equals("")) {
+            new AlertDialog.Builder(this)
+                    .setMessage( "請輸入數值")
+                    .setTitle("bmi 運算")
+                    .setPositiveButton("OK", null)
+                    //.setNeutralButton("Cancel", null)
+                    .show();
+        }
+
+        else{
+            float weight = Float.parseFloat(w);
+            float height = Float.parseFloat(h);
+            float bmi = weight/(height*height);
+
+
+            new AlertDialog.Builder(this)
+                    .setMessage(bmi + "")
+                    .setTitle("bmi 運算")
+                    .setPositiveButton("OK", null)
+                    .setNeutralButton("Cancel", null)
+                    .show();
+        }
 
 
 
