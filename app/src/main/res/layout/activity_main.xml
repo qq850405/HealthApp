@@ -9,69 +9,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.wenyi.healthapp.MainActivity">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/bmi" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="體重"
-            android:id="@+id/textView" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ed_weight"
-            android:hint="請輸入公斤" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="身高"
-            android:id="@+id/textView2" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ed_height"
-            android:hint="請輸入公尺" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal">
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="計算"
-                android:id="@+id/button"
-                android:layout_marginTop="26dp"
-                android:onClick="bmi"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="幫助"
-                android:id="@+id/b_help"
-                android:layout_below="@+id/button"
-                android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-
-    </LinearLayout>
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/list"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentBottom="false" />
 </RelativeLayout>

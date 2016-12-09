@@ -1,17 +1,19 @@
 package com.example.wenyi.healthapp;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
-    private EditText edWeight;
-    private EditText edHeight;
-    private Button bHelp;
+        String[] func ={"BMI","健康中心","飲食","最新消息","離開"};
+
+
+
 
 
     @Override
@@ -19,75 +21,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViews();
-        bHelp.setOnClickListener(new View.OnClickListener(){
-
-
-            @Override
-            public void onClick(View v){
-
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("BMI說明")
-                        .setMessage("體痛(kg)/身高的平方(m^2)")
-                        .setPositiveButton("OK",null)
-                        .show();
-            }
-
-
-        }
-        );
+        ListView list =(ListView) findViewById(R.id.list);
+        ArrayAdapter adapter =new ArrayAdapter(this,android.R.layout.simple_list_item_1,func);
+        list.setAdapter(adapter);
+        list.setOnItemClickListener(this);
 
 
 
-    }
 
-    private void findViews() {
-
-        //讀資料
-        edWeight = (EditText) findViewById(R.id.ed_weight);
-        edHeight = (EditText) findViewById(R.id.ed_height);
-        bHelp =(Button) findViewById(R.id.b_help);
-    }
-
-    public void bmi(View v){
-
-
-
-       // Log.d("BMI" ,String.valueOf(bmi));
-        // Toast.makeText(this,String.valueOf(bmi),Toast.LENGTH_LONG).show();
-
-
-        /*AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("您的BMI值為"+bmi);
-        builder.show();
-                */
-        String w = edWeight.getText().toString();
-        String h = edHeight.getText().toString();
-
-
-
-        if(w.equals("") || h.equals("")) {
-            new AlertDialog.Builder(this)
-                    .setMessage( "請輸入數值")
-                    .setTitle("bmi 運算")
-                    .setPositiveButton("OK", null)
-                    //.setNeutralButton("Cancel", null)
-                    .show();
-        }
-
-        else{
-            float weight = Float.parseFloat(w);
-            float height = Float.parseFloat(h);
-            float bmi = weight/(height*height);
-
-
-            new AlertDialog.Builder(this)
-                    .setMessage(bmi + "")
-                    .setTitle("bmi 運算")
-                    .setPositiveButton("OK", null)
-                    .setNeutralButton("Cancel", null)
-                    .show();
-        }
 
 
 
@@ -97,4 +38,29 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
+
+
+        switch(position){
+            case 0:
+
+                startActivity(
+
+                        new Intent(this,BmiActivity.class)
+                );
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                finish();
+                break;
+        }
+
+    }
 }
